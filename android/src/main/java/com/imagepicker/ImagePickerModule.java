@@ -30,7 +30,6 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.module.annotations.ReactModule;
 import com.imagepicker.media.ImageConfig;
 import com.imagepicker.permissions.PermissionUtils;
 import com.imagepicker.permissions.OnImagePickerPermissionsCallback;
@@ -56,13 +55,9 @@ import static com.imagepicker.utils.MediaUtils.*;
 import static com.imagepicker.utils.MediaUtils.createNewFile;
 import static com.imagepicker.utils.MediaUtils.getResizedImage;
 
-@ReactModule(name = ImagePickerModule.NAME)
 public class ImagePickerModule extends ReactContextBaseJavaModule
         implements ActivityEventListener
 {
-  public static final String NAME = "ImagePickerManager";
-
-  public static final int DEFAULT_EXPLAINING_PERMISSION_DIALIOG_THEME = R.style.DefaultExplainingPermissionsTheme;
 
   public static final int REQUEST_LAUNCH_IMAGE_CAPTURE    = 13001;
   public static final int REQUEST_LAUNCH_IMAGE_LIBRARY    = 13002;
@@ -127,11 +122,6 @@ public class ImagePickerModule extends ReactContextBaseJavaModule
     }
   };
 
-  public ImagePickerModule(ReactApplicationContext reactContext)
-  {
-    this(reactContext, DEFAULT_EXPLAINING_PERMISSION_DIALIOG_THEME);
-  }
-
   public ImagePickerModule(ReactApplicationContext reactContext,
                            @StyleRes final int dialogThemeId)
   {
@@ -144,7 +134,7 @@ public class ImagePickerModule extends ReactContextBaseJavaModule
 
   @Override
   public String getName() {
-    return NAME;
+    return "ImagePickerManager";
   }
 
   @ReactMethod
